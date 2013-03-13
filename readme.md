@@ -7,6 +7,7 @@ programs. A server build script is also created so that we can deploy a few
 servers and load the data into the respective programs before the datadive
 starts.
 
+## Formats
 We store the data in these formats. For each format, we will also provide
 snippets for importing of that format into R and/or Python, as is appropriate.
 
@@ -16,9 +17,10 @@ snippets for importing of that format into R and/or Python, as is appropriate.
 * MySQL dump
 * JSON (perhaps in multiple different structures)
 * SQLite file?
-* I don't get what datahub.io does....
 * It's a bit small for Hadoop, but we could try [Mortar](http://www.mortardata.com/).
+* Some sort of web API, but datahub.io doesn't seem to do this.
 
+## Plying
 We plyed the data in these ways.
 
 * Random subset
@@ -29,6 +31,11 @@ We plyed the data in these ways.
 The first two of these plyings and maybe the third way should result in a
 dataset that works fine in desktop statistics programs (Excel, SAS, &c.).
 
+## Build script
 The build script is intended to be run on Ubuntu on a Linode or EC2.
 The [high-memory extra large instance](http://aws.amazon.com/ec2/pricing/)
 looks good for this, and it would cost $9.84 per day per node.
+
+## Plans
+We don't have to do everything I suggest there. I'll probably start
+by putting it in MySQL and then transforming everything from there.
