@@ -17,12 +17,17 @@ snippets for importing of that format into R and/or Python, as is appropriate.
 * JSON (perhaps in multiple different structures)
 * SQLite file?
 * I don't get what datahub.io does....
+* It's a bit small for Hadoop, but we could try [Mortar](http://www.mortardata.com/).
 
 We plyed the data in these ways.
 
-* No alteration (Just combine all 12 original files into one table.)
 * Random subset
-* Only certain columns
 * Aggregate something by something?
+* Only certain columns
+* No alteration (Just combine all 12 original files into one table.)
 
-The build script is intended to be run on Ubuntu on a Linode.
+The first two of these plyings and maybe the third way should result in a file
+that works fine in Excel
+
+
+The build script is intended to be run on Ubuntu on a Linode or EC2.
