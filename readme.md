@@ -29,5 +29,6 @@ We plyed the data in these ways.
 The first two of these plyings and maybe the third way should result in a file
 that works fine in Excel
 
-
 The build script is intended to be run on Ubuntu on a Linode or EC2.
+The [high-memory extra large instance](http://aws.amazon.com/ec2/pricing/)
+looks good for this, and it would cost $9.84 per day per node.
