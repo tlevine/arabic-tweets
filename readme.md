@@ -26,8 +26,8 @@ We plyed the data in these ways.
 * Only certain columns
 * No alteration (Just combine all 12 original files into one table.)
 
-The first two of these plyings and maybe the third way should result in a file
-that works fine in Excel
+The first two of these plyings and maybe the third way should result in a
+dataset that works fine in desktop statistics programs (Excel, SAS, &c.).
 
 The build script is intended to be run on Ubuntu on a Linode or EC2.
 The [high-memory extra large instance](http://aws.amazon.com/ec2/pricing/)
