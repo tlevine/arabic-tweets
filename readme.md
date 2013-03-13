@@ -41,6 +41,10 @@ The raw data files are about 10 GB compressed. I think that instances that have
 slow IO, less CPU and just a bit more memory than the data size will be most
 appropriate.
 
+Let's make sure that there's an easy way for people to save output to other
+places. In particular, I'm thinking of PNG or PDF plots and aggregated data
+in JSON files.
+
 ### Idea 1: Minimal cloudness
 We make one self-contained instance that can load everything, and we deploy a
 few copies of this.
