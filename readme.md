@@ -31,7 +31,16 @@ We plyed the data in these ways.
 The first two of these plyings and maybe the third way should result in a
 dataset that works fine in desktop statistics programs (Excel, SAS, &c.).
 
-## Build script
+## Infrastructure
+Here are a few ideas of how we set up the infrastructure. Regardless of which
+one we choose, we'll store the data in the various formats in S3 or EBS so that
+we can quickly get it from the various Amazon services and from other places
+over the web.
+
+### Idea 1: Minimal cloudness
+We make one self-contained instance that can load everything, and we deploy a
+few copies of this.
+
 The [high-memory extra large instance](http://aws.amazon.com/ec2/pricing/)
 looks good for this, and it would cost $9.84 per day per node.
 I looked at a few other things, but they mostly look annoying to sign up for.
@@ -47,14 +56,16 @@ If we make one build script for everything, it might include
 My [desk install script](https://github.com/tlevine/desk/blob/master/install)
 has some ideas regarding the libraries.
 
+We could use an existing image, but
+[this](https://aws.amazon.com/amis/crosscompute-python-scientific-computing-environment-and-tutorials-20121009)
+was the only relevant one I found.
+
+### Idea 2: Cloud database
 [Amazon RDS](http://aws.amazon.com/rds/) looks promising. I'd go with the
 High-Memory Extra Large DB instance. They have some
 [directions](http://aws.amazon.com/articles/1663) on using it for MySQL
 with persistent storage on EBS.
 
-We could use an existing image, but
-[this](https://aws.amazon.com/amis/crosscompute-python-scientific-computing-environment-and-tutorials-20121009)
-was the only relevant one I found.
 
 ## Infrastructure
 Let's store the data in the various formats at the same datacenter
