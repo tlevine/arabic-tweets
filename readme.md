@@ -37,6 +37,10 @@ one we choose, we'll store the data in the various formats in S3 or EBS so that
 we can quickly get it from the various Amazon services and from other places
 over the web.
 
+The raw data files are about 10 GB compressed. I think that instances that have
+slow IO, less CPU and just a bit more memory than the data size will be most
+appropriate.
+
 ### Idea 1: Minimal cloudness
 We make one self-contained instance that can load everything, and we deploy a
 few copies of this.
@@ -56,20 +60,26 @@ If we make one build script for everything, it might include
 My [desk install script](https://github.com/tlevine/desk/blob/master/install)
 has some ideas regarding the libraries.
 
-We could use an existing image, but
-[this](https://aws.amazon.com/amis/crosscompute-python-scientific-computing-environment-and-tutorials-20121009)
-was the only relevant one I found.
+### Idea 2: Maximal cloudness
+We don't configure our own computers at all.
 
-### Idea 2: Cloud database
-[Amazon RDS](http://aws.amazon.com/rds/) looks promising. I'd go with the
-High-Memory Extra Large DB instance. They have some
+We use [Amazon RDS](http://aws.amazon.com/rds/) for the database.
+I'd go with the High-Memory Extra Large DB instance. They have some
 [directions](http://aws.amazon.com/articles/1663) on using it for MySQL
 with persistent storage on EBS.
 
+We use someone else's EC2 iPython Notebook configuration. Here are possibilities.
 
-## Infrastructure
-Let's store the data in the various formats at the same datacenter
-as the various computation nodes.
+* [NotebookCloud](https://notebookcloud.appspot.com)
+* [PiCloud Notebook](http://blog.picloud.com/2012/12/23/introducing-the-picloud-notebook/)
+* [iPython in a box](https://github.com/wholeslide/ipython_in_a_box)
+* [This EC2 image](https://aws.amazon.com/amis/crosscompute-python-scientific-computing-environment-and-tutorials-20121009)
+
+We use someone else's AMI that already has RStudio.
+[Here](http://stackoverflow.com/questions/5187338/public-amazon-ec2-amis-with-r-pre-installed) are ideas.
+
+We use [Mortar](https://mortardata.com) for Hadoop. They have
+[directions for loading CSVs from S3](http://help.mortardata.com/reference/loading_and_storing_data/CSV).
 
 ## Plans
 We don't have to do everything I suggest there. I'll probably start
