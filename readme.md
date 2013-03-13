@@ -64,7 +64,8 @@ has some ideas regarding the libraries.
 We don't configure our own computers at all.
 
 We use [Amazon RDS](http://aws.amazon.com/rds/) for the database.
-I'd go with the High-Memory Extra Large DB instance.
+I'd go with the High-Memory Extra Large DB instance. They have
+[directions for loading data](http://aws.amazon.com/articles/Amazon-RDS/2933).
 
 We use someone else's EC2 iPython Notebook configuration. Here are possibilities.
 
