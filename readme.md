@@ -64,9 +64,7 @@ has some ideas regarding the libraries.
 We don't configure our own computers at all.
 
 We use [Amazon RDS](http://aws.amazon.com/rds/) for the database.
-I'd go with the High-Memory Extra Large DB instance. They have some
-[directions](http://aws.amazon.com/articles/1663) on using it for MySQL
-with persistent storage on EBS.
+I'd go with the High-Memory Extra Large DB instance.
 
 We use someone else's EC2 iPython Notebook configuration. Here are possibilities.
 
