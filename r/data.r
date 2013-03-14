@@ -15,8 +15,11 @@ rdata <- function() {
 
 # Load sample data from a spreadsheet
 spreadsheet.sample <- function() {
-  .colClasses <- c(factor, numeric, character, character, character)
-  d <- read.csv('tweets_ar_1.txt', colClasses = .colClasses, sep = '\t')
-  d$date <- as.POSIXct(d$date)
+  .colClasses <- c('factor', 'numeric', 'numeric', 'character', 'character', 'character', 'character')
+  .col.names  <- c('user',   'foo',     'id',      'bar',       'date',      'text',      'junk')
+  d <- read.csv('tweets_ar_1.txt', colClasses = .colClasses, sep = '\t',
+    header = F, col.names = .col.names, flush = T)
+  d$date <- strptime(d$date, format = '%a %b %d %H:%M:%S AST %Y')
+  d$junk <- NULL
   d
 }
