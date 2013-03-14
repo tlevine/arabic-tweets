@@ -98,6 +98,6 @@ Set up the schema.
 
     mysql -u[user] -p[password] tweets < schema.sql
 
-Download the files.
+Download the files, and gunzip them; they'll now be named `tweets_ar_1?[0-9].txt`.
 
 Run the converter script.
