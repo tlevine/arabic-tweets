@@ -14,12 +14,13 @@ rdata <- function() {
 }
 
 # Load sample data from a spreadsheet
-spreadsheet.sample <- function() {
+tsv <- function(filename) {
   .colClasses <- c('factor', 'numeric', 'numeric', 'character', 'character', 'character', 'character')
-  .col.names  <- c('user',   'foo',     'id',      'bar',       'date',      'text',      'junk')
-  d <- read.csv('tweets_ar_1.txt', colClasses = .colClasses, sep = '\t',
+  .col.names  <- c('username','userid', 'id',      'alwaysnull','date',      'text',      'junk')
+  d <- read.csv(filename, colClasses = .colClasses, sep = '\t',
     header = F, col.names = .col.names, flush = T)
-  d$date <- strptime(d$date, format = '%a %b %d %H:%M:%S AST %Y')
+  d$date <- strptime(d$date, format = '%a %b %d %H:%M:%S AST %Y', tz = 'AST')
+  d$alwaysnull <- NULL
   d$junk <- NULL
   d
 }
