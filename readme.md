@@ -98,6 +98,9 @@ Set up the schema.
 
     mysql -u[user] -p[password] tweets < schema.sql
 
-Download the files, and gunzip them; they'll now be named `tweets_ar_1?[0-9].txt`.
+Download the files to the `tweets` directory, and gunzip them; they'll now be
+named `tweets/tweets_ar_1?[0-9].txt`.
 
 Run the converter script.
+
+    Rscript convert.r

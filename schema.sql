@@ -15,7 +15,7 @@ CREATE TABLE `tweets` (
 
   -- Dates without fractional seconds
   -- `date` TIMESTAMP(0) NOT NULL,
-  `date` TIMESTAMP NOT NULL,
+  `date` TIMESTAMP NOT NULL DEFAULT 0,
 
   -- The Tweet
   `text` VARCHAR(140) NOT NULL,

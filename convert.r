@@ -4,5 +4,7 @@ source('r/data.r')
 library(RMySQL)
 con <- dbConnect(MySQL(), user="root", password="", dbname="tweets", host="localhost")
 
-tweets <- spreadsheet('h')
-dbWriteTable(con, 'tweets', tweets, overwrite = F, append = T)
+for (spreadsheet in paste('tweets/tweets_ar', 1:12, '.txt')) {
+#  tweets <- tsv(spreadsheet)
+#  dbWriteTable(con, 'tweets', tweets, overwrite = F, append = T, row.names = F)
+}
