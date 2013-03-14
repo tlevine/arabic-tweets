@@ -91,8 +91,7 @@ by putting it in MySQL and then transforming everything from there.
 
 ## Converting data
 I'm loading everything into R, then to MySQL, then plying it and pulling it back
-out into the various formats. The one exception is the RData file, which I'm
-doing directly from R, without going through MySQL.
+out into the various formats.
 
 Set up the schema.
 
