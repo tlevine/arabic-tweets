@@ -1,10 +1,10 @@
 CREATE TABLE "tweets" (
-  "user" NOT NULL,
+  "user" VARCHAR(20) NOT NULL,
 
   -- 64-bit unsigned integers
   -- https://dev.twitter.com/docs/twitter-ids-json-and-snowflake
   -- http://dev.mysql.com/doc/refman/5.6/en/integer-types.html
-  "id" BIGINT NOT NULL,
+  "id" BIGINT UNSIGNED NOT NULL,
   ??,
   "date" TIMESTAMP(0),
   "text" VARCHAR(140),
