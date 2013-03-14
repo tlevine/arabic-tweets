@@ -16,7 +16,7 @@ rdata <- function() {
 # Load sample data from a spreadsheet
 spreadsheet.sample <- function() {
   .colClasses <- c(factor, numeric, character, character, character)
-  d <- read.csv('http://data-in-s3', colClasses = .colClasses)
+  d <- read.csv('tweets_ar_1.txt', colClasses = .colClasses, sep = '\t')
   d$date <- as.POSIXct(d$date)
   d
 }
