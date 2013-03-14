@@ -88,3 +88,16 @@ We use [Mortar](https://mortardata.com) for Hadoop. They have
 ## Plans
 We don't have to do everything I suggest there. I'll probably start
 by putting it in MySQL and then transforming everything from there.
+
+## Converting data
+I'm loading everything into R, then to MySQL, then plying it and pulling it back
+out into the various formats. The one exception is the RData file, which I'm
+doing directly from R, without going through MySQL.
+
+Set up the schema.
+
+    mysql -u[user] -p[password] tweets < schema.sql
+
+Download the files.
+
+Run the converter script.
