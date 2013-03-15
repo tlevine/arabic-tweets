@@ -98,8 +98,15 @@ Make sure to use the version with SSH access so you can add these extra things:
     ln -s arabic-tweets/.my.cnf .
     Rscript -e "install.packages('RMySQL')"
 
-### Transferring to and from S3
-Run things like this.
+Also, note that most of the storage is mounted on `/mnt`.
+
+
+### Useful snippets
+Wait for the csv to be ready, then load them.
+
+    while true; do if test $(ls tweets/*.csv | wc -l) -eq 12; then ./import.sh; break; else sleep 10; fi; don
+
+Transfer things to and from S3.
 
     s3cmd put tweets_ar_1.txt.csv s3://arabictweets
     s3cmd get s3://arabictweets/tweets_ar_1.txt.csv
