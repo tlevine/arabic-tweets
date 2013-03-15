@@ -29,25 +29,29 @@ The first two of these plyings and maybe the third way should result in a
 dataset that works fine in desktop statistics programs (Excel, SAS, &c.).
 
 ## Converting data
-I'm loading everything into R, then to MySQL, then plying it and pulling it back
-out into the various formats.
+I clean up the spreadsheets slightly, load them into MySQL, then convert
+the data from there into the various formats.
+
+### Cleaning up spreadsheets
+Download the files to the `tweets` directory, and gunzip them; they'll now be
+named `tweets/tweets_ar_1?[0-9].txt`. We stored them in S3, so `s3cmd` was
+helpful.
+
+Load each source spreadsheet into R, clean it up, then export it as another
+spreadsheet, this time a csv.
+
+    Rscript import.r
 
 ### Importing
 Add the database to your `~/.my.cnf`, then set up the schema.
 
     mysql < schema.sql
 
-Also add the users.
+Add the users while you're at it.
 
     mysql < users.sql
 
-Download the files to the `tweets` directory, and gunzip them; they'll now be
-named `tweets/tweets_ar_1?[0-9].txt`. We stored them in S3, so `s3cmd` was
-helpful.
-
-Run the MySQL import script.
-
-    Rscript import.r
+Then load the data.
 
 Once that finishes, everything will be in the `tweets.tweets` table.
 
