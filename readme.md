@@ -84,11 +84,12 @@ We have iPython Notebooks running in Virginia on
 
 ### RStudio
 We're using the [Bioconductor AMI](http://bioconductor.org/help/bioconductor-cloud-ami/).
+Check the "Outputs" tab for the box's address.
 Make sure to use the version with SSH access so you can add these extra things:
 
     # As root
     apt-get update
-    apt-get install libmysqlclient-dev
+    apt-get install libmysqlclient-dev s3cmd
     adduser [username]
 
     # As the user
@@ -97,5 +98,8 @@ Make sure to use the version with SSH access so you can add these extra things:
     ln -s arabic-tweets/.my.cnf .
     Rscript -e "install.packages('RMySQL')"
 
-RStudio runs on port 8787.
+### Transferring to and from S3
+Run things like this.
 
+    s3cmd put tweets_ar_1.txt.csv s3://arabictweets
+    s3cmd get s3://arabictweets/tweets_ar_1.txt.csv
