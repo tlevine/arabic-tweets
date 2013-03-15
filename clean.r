@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 # Convert the source TSV files to a bunch of nice formats.
 source('r/data.r')
-spreadsheets <- c('tweets/tweets_ar.txt', paste('tweets/tweets_ar_', c(1:4,6,8), '.txt', sep = ''))
+spreadsheets <- c('tweets/tweets_ar.txt', paste('tweets/tweets_ar_', c(1:12), '.txt', sep = ''))
 for (spreadsheet.in in spreadsheets) {
   spreadsheet.out <- paste(spreadsheet.in, '.csv', sep = '')
 
