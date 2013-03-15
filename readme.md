@@ -93,9 +93,11 @@ by putting it in MySQL and then transforming everything from there.
 I'm loading everything into R, then to MySQL, then plying it and pulling it back
 out into the various formats.
 
-Set up the schema.
+First, add the database to your `~/.my.cnf`.
 
-    mysql -u[user] -p[password] tweets < schema.sql
+Next, set up the schema.
+
+    mysql < schema.sql
 
 Download the files to the `tweets` directory, and gunzip them; they'll now be
 named `tweets/tweets_ar_1?[0-9].txt`.
@@ -103,9 +105,14 @@ named `tweets/tweets_ar_1?[0-9].txt`.
 Before you import them, set these things from the MySQL console so the import
 [goes faster](http://dev.mysql.com/doc/refman/5.0/en/innodb-tuning.html).
 
-    SET autocommit=0; 
-    SET unique_checks=0; 
+    echo 'SET autocommit=0;' | mysql
+    echo 'SET unique_checks=0;' | mysql
 
-Run the converter script.
+Run the MySQL import script.
 
     Rscript import.r
+
+Turn those slow things back on.
+
+    echo 'SET autocommit=1;' | mysql
+    echo 'SET unique_checks=1;' | mysql
