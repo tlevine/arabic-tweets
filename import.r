@@ -5,7 +5,7 @@ library(RMySQL)
 # con <- dbConnect(MySQL(), user="root", password="", dbname="tweets", host="endpoint")
 con <- dbConnect(MySQL())
 
-spreadsheets <- paste('tweets/tweets_ar.txt', 'tweets/tweets_ar_', c(1:4,6,8), '.txt', sep = '')
+spreadsheets <- c('tweets/tweets_ar.txt', paste('tweets/tweets_ar_', c(1:4,6,8), '.txt', sep = ''))
 
 # Make this faster?
 # http://dev.mysql.com/doc/refman/5.0/en/innodb-tuning.html
