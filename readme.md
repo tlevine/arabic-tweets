@@ -8,29 +8,18 @@ servers and load the data into the respective programs before the datadive
 starts.
 
 ## Formats
-We store the data in these formats. For each format, we will also provide
-snippets for importing of that format into R and/or Python, as is appropriate.
+Data are available in these formats.
 
+* Full CSV file
 * CSV of a random sample
-* RData file of a data.frame
-* Pickle file of a Pandas DataFrame
 * MySQL dump
-* JSON (perhaps in multiple different structures)
 
-## Plying
-We plyed the data in these ways.
-
-* Random subset
-* Aggregate something by something?
-* Only certain columns
-* No alteration (Just combine all 12 original files into one table.)
-
-The first two of these plyings and maybe the third way should result in a
-dataset that works fine in desktop statistics programs (Excel, SAS, &c.).
+It's also in a MySQL database, and we have code for loading them into R and
+Python (Pandas).
 
 ## Converting data
-I've cleaned up the spreadsheets slightly and loaded them into MySQL.
-Now we can pull them out of MySQL into R, Python (Pandas), &c.
+Here are instructions for running the scripts that clean up the spreadsheets
+slightly, load them into MySQL and then take them out in other formats
 
 ### Cleaning up spreadsheets
 Download the files to the `tweets` directory, and gunzip them; they'll now be
@@ -45,11 +34,11 @@ spreadsheet, this time a csv.
 ### Into the database
 Add the database to your `~/.my.cnf`, then set up the schema.
 
-    mysql < schema.sql
+    mysql tweets < schema.sql
 
 Add the users while you're at it.
 
-    mysql < users.sql
+    mysql tweets < users.sql
 
 Then load the data.
 
@@ -60,6 +49,9 @@ Once that finishes, everything will be in the `tweets.tweets` table.
 ### Out of the database
 The `python` and `r` directories have boilerplate code for accessing the data
 from the MySQL server.
+
+The `subset` directory has scripts that produce small spreadsheets that are
+subsets and other slices of the data.
 
 ## Infrastructure
 We have some files that are suitable for analysis on a laptop, but we've also
