@@ -17,9 +17,11 @@ rdata <- function() {
 tsv <- function(filename) {
   .colClasses <- c('factor', 'numeric', 'character', 'character', 'character', 'character', 'character')
   .col.names  <- c('username','userid', 'id',        'alwaysnull','date',      'text',      'junk')
-  d <- read.csv(filename, colClasses = .colClasses, sep = '\t',
+  d <- read.csv(filename, colClasses = .colClasses, sep = '\t', encoding = 'utf-8',
     header = F, col.names = .col.names, flush = T)
-  d$date <- strptime(d$date, format = '%a %b %d %H:%M:%S AST %Y', tz = 'AST')
+
+  # This seemed easier than figuring out how timezone conversion worked.
+  d$date <- strptime(d$date, format = '%a %b %d %H:%M:%S AST %Y', tz = 'UTC') + (4 * 3600)
   d$alwaysnull <- NULL
   d$junk <- NULL
   d

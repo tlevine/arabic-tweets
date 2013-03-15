@@ -9,8 +9,13 @@ con <- dbConnect(MySQL())
 spreadsheets <- c('tweets/tweets_ar.txt', paste('tweets/tweets_ar_', c(1:4,6,8), '.txt', sep = ''))
 
 for (spreadsheet in spreadsheets) {
-  cat(paste('Reading', spreadsheet, 'from disk\n'))
-  tweets <- tsv(spreadsheet)
-  cat(paste('Inserting', spreadsheet, 'into the database\n'))
-  dbWriteTable(con, 'tweets', tweets, overwrite = F, append = T, row.names = F)
+  cat(paste('Reading', spreadsheet, '\n'))
+  tweets.new <- tsv(spreadsheet)
+  if ('tweets' %in% ls()){
+    tweets <- rbind(tweets, tweets.new)
+  } else {
+    tweets <- tweets.new
+  }
 }
+
+# Just write to csv because dbWriteTable is being weird
