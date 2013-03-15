@@ -16,5 +16,5 @@ for (spreadsheet in spreadsheets) {
   cat(paste('Reading', spreadsheet, 'from disk\n'))
   tweets <- tsv(spreadsheet)
   cat(paste('Inserting', spreadsheet, 'into the database\n'))
-  dbWriteTable(con, 'tweets', tweets, overwrite = F, append = T, row.names = F)
+  dbWriteTable(con, 'tweets_import', tweets, overwrite = F, append = T, row.names = F)
 }

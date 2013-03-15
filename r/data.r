@@ -15,8 +15,8 @@ rdata <- function() {
 
 # Load sample data from a spreadsheet
 tsv <- function(filename) {
-  .colClasses <- c('factor', 'numeric', 'numeric', 'character', 'character', 'character', 'character')
-  .col.names  <- c('username','userid', 'id',      'alwaysnull','date',      'text',      'junk')
+  .colClasses <- c('factor', 'numeric', 'character', 'character', 'character', 'character', 'character')
+  .col.names  <- c('username','userid', 'id',        'alwaysnull','date',      'text',      'junk')
   d <- read.csv(filename, colClasses = .colClasses, sep = '\t',
     header = F, col.names = .col.names, flush = T)
   d$date <- strptime(d$date, format = '%a %b %d %H:%M:%S AST %Y', tz = 'AST')
