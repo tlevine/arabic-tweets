@@ -7,7 +7,7 @@ for (spreadsheet.in in spreadsheets) {
   tweets <- tsv(spreadsheet.in)
 
   # Just write to csv because dbWriteTable is being weird
-  spreadsheet.out <- paste(spreadsheet, '.csv', sep = '')
-  cat(paste('Reading', spreadsheet.out, '\n'))
+  spreadsheet.out <- paste(spreadsheet.in, '.csv', sep = '')
+  cat(paste('Writing', spreadsheet.out, '\n'))
   write.csv(tweets, row.names = F, file = spreadsheet.out)
 }
