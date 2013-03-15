@@ -29,8 +29,8 @@ The first two of these plyings and maybe the third way should result in a
 dataset that works fine in desktop statistics programs (Excel, SAS, &c.).
 
 ## Converting data
-I clean up the spreadsheets slightly, load them into MySQL, then convert
-the data from there into the various formats.
+I've cleaned up the spreadsheets slightly and loaded them into MySQL.
+Now we can pull them out of MySQL into R, Python (Pandas), &c.
 
 ### Cleaning up spreadsheets
 Download the files to the `tweets` directory, and gunzip them; they'll now be
@@ -40,9 +40,9 @@ helpful.
 Load each source spreadsheet into R, clean it up, then export it as another
 spreadsheet, this time a csv.
 
-    Rscript import.r
+    Rscript clean.r
 
-### Importing
+### Into the database
 Add the database to your `~/.my.cnf`, then set up the schema.
 
     mysql < schema.sql
@@ -53,11 +53,13 @@ Add the users while you're at it.
 
 Then load the data.
 
+    ./import.sh
+
 Once that finishes, everything will be in the `tweets.tweets` table.
 
-### Exporting
+### Out of the database
 The `python` and `r` directories have boilerplate code for accessing the data
-from the MySQL server and some other formats.
+from the MySQL server.
 
 ## Infrastructure
 We have some files that are suitable for analysis on a laptop, but we've also
