@@ -83,10 +83,11 @@ We have iPython Notebooks running in Virginia on
 [NotebookCloud](https://notebookcloud.appspot.com) images.
 
 ### RStudio
-We're using the [Bioconductor AMI](http://bioconductor.org/help/bioconductor-cloud-ami/)
+We're using the [Bioconductor AMI](http://bioconductor.org/help/bioconductor-cloud-ami/).
 Make sure to use the version with SSH access so you can add these extra things:
 
     # As root
+    apt-get update
     apt-get install libmysqlclient-dev
     adduser [username]
 
