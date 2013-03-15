@@ -82,7 +82,7 @@ We're using the [Bioconductor AMI](http://bioconductor.org/help/bioconductor-clo
 on [m2.xlarge](http://aws.amazon.com/ec2/instance-types/) instances.
 It needs these extra things:
 
-    apt-get install mysql-client
+    apt-get install libmysqlclient-dev
 
 We use [Mortar](https://mortardata.com) for Hadoop. They have
 [directions for loading CSVs from S3](http://help.mortardata.com/reference/loading_and_storing_data/CSV).

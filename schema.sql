@@ -30,6 +30,6 @@ CREATE TABLE `tweets` (
 
   KEY `username` (`username`),
   KEY `userid` (`userid`),
-  KEY `date` (`date`)
+  KEY `date` (`date`),
   UNIQUE KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
