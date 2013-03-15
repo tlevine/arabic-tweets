@@ -2,7 +2,8 @@
 source('r/data.r')
 
 library(RMySQL)
-con <- dbConnect(MySQL(), user="root", password="", dbname="tweets", host="localhost")
+# con <- dbConnect(MySQL(), user="root", password="", dbname="tweets", host="endpoint")
+con <- dbConnect(MySQL())
 
 # spreadsheets <- c('tweets/tweets_ar.txt', paste('tweets/tweets_ar_', 1:12, '.txt', sep = ''))
 spreadsheets <- paste('tweets/tweets_ar_', 1:3, '.txt', sep = '')
