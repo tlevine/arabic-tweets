@@ -18,7 +18,9 @@ CREATE TABLE `tweets` (
   `date` TIMESTAMP NOT NULL DEFAULT 0,
 
   -- The Tweet
-  `text` VARCHAR(140) NOT NULL
+  `text` VARCHAR(140) NOT NULL,
+
+  UNIQUE KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE INDEX `username` ON tweets(`username`);

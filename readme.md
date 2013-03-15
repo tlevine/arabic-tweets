@@ -102,17 +102,6 @@ Next, set up the schema.
 Download the files to the `tweets` directory, and gunzip them; they'll now be
 named `tweets/tweets_ar_1?[0-9].txt`.
 
-Before you import them, set these things from the MySQL console so the import
-[goes faster](http://dev.mysql.com/doc/refman/5.0/en/innodb-tuning.html).
-
-    echo 'SET autocommit=0;' | mysql
-    echo 'SET unique_checks=0;' | mysql
-
 Run the MySQL import script.
 
     Rscript import.r
-
-Turn those slow things back on.
-
-    echo 'SET autocommit=1;' | mysql
-    echo 'SET unique_checks=1;' | mysql
