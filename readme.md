@@ -87,10 +87,8 @@ You'll probably want to alter the database somewhat, so we'll make database
 users with more privileges.
 
 ### iPython Notebook
-We have iPython Notebooks running in Virginia. We're gonna use one of these images/services.
-
-* [NotebookCloud](https://notebookcloud.appspot.com)
-* [This EC2 image](https://aws.amazon.com/amis/crosscompute-python-scientific-computing-environment-and-tutorials-20121009)
+We have iPython Notebooks running in Virginia on
+[NotebookCloud](https://notebookcloud.appspot.com) images.
 
 ### RStudio
 We're using the [Bioconductor AMI](http://bioconductor.org/help/bioconductor-cloud-ami/)
