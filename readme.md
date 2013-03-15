@@ -78,9 +78,8 @@ We use someone else's EC2 iPython Notebook configuration. Here are possibilities
 * [iPython in a box](https://github.com/wholeslide/ipython_in_a_box)
 * [This EC2 image](https://aws.amazon.com/amis/crosscompute-python-scientific-computing-environment-and-tutorials-20121009)
 
-We use someone else's AMI that already has RStudio.
-[These](http://bioconductor.org/help/bioconductor-cloud-ami/)
-[two](http://www.louisaslett.com/RStudio_AMI/) are promising.
+We're using the [Bioconductor AMI](http://bioconductor.org/help/bioconductor-cloud-ami/)
+on [m2.xlarge](http://aws.amazon.com/ec2/instance-types/) instances.
 
 We use [Mortar](https://mortardata.com) for Hadoop. They have
 [directions for loading CSVs from S3](http://help.mortardata.com/reference/loading_and_storing_data/CSV).
