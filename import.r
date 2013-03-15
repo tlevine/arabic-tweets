@@ -9,8 +9,8 @@ con <- dbConnect(MySQL())
 spreadsheets <- paste('tweets/tweets_ar_', 2:3, '.txt', sep = '')
 
 for (spreadsheet in spreadsheets) {
-  cat(paste('Reading', spreadsheet, 'from disk'))
+  cat(paste('Reading', spreadsheet, 'from disk\n'))
   tweets <- tsv(spreadsheet)
-  cat(paste('Inserting', spreadsheet, 'into the database'))
+  cat(paste('Inserting', spreadsheet, 'into the database\n'))
   dbWriteTable(con, 'tweets', tweets, overwrite = F, append = T, row.names = F)
 }
