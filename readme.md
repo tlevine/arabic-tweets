@@ -11,14 +11,11 @@ starts.
 We store the data in these formats. For each format, we will also provide
 snippets for importing of that format into R and/or Python, as is appropriate.
 
-* CSV
+* CSV of a random sample
 * RData file of a data.frame
 * Pickle file of a Pandas DataFrame
 * MySQL dump
 * JSON (perhaps in multiple different structures)
-* SQLite file?
-* It's a bit small for Hadoop, but we could try [Mortar](http://www.mortardata.com/).
-* Some sort of web API, but datahub.io doesn't seem to do this.
 
 ## Plying
 We plyed the data in these ways.
@@ -31,79 +28,78 @@ We plyed the data in these ways.
 The first two of these plyings and maybe the third way should result in a
 dataset that works fine in desktop statistics programs (Excel, SAS, &c.).
 
+## Converting data
+I'm loading everything into R, then to MySQL, then plying it and pulling it back
+out into the various formats.
+
+### Importing
+Add the database to your `~/.my.cnf`, then set up the schema.
+
+    mysql < schema.sql
+
+Also add the users.
+
+    mysql < users.sql
+
+Download the files to the `tweets` directory, and gunzip them; they'll now be
+named `tweets/tweets_ar_1?[0-9].txt`. We stored them in S3, so `s3cmd` was
+helpful.
+
+Run the MySQL import script.
+
+    Rscript import.r
+
+Once that finishes, everything will be in the `tweets.tweets` table.
+
+### Exporting
+The `python` and `r` directories have boilerplate code for accessing the data
+from the MySQL server and some other formats.
+
 ## Infrastructure
-Here are a few ideas of how we set up the infrastructure. Regardless of which
-one we choose, we'll store the data in the various formats in S3 or EBS so that
-we can quickly get it from the various Amazon services and from other places
-over the web.
+We have some files that are suitable for analysis on a laptop, but we've also
+loaded the full dataset into a server in Virginia and have set up some other
+servers in Virginia from which you can analyse the dataset. 
 
-The raw data files are about 10 GB compressed. I think that instances that have
-slow IO, less CPU and just a bit more memory than the data size will be most
-appropriate.
+All of the systems are AWS EC2 or RDS instances with 15GB of RAM
+([m2.xlarge](http://aws.amazon.com/ec2/instance-types/) and db.m2.xlarge, respectively),
+which is enough to fit most of the data in RAM. We can easily use different
+instances if you need more power.
 
-Let's make sure that there's an easy way for people to save output to other
-places. In particular, I'm thinking of PNG or PDF plots and aggregated data
-in JSON files.
+### Database
+Data are in a canonical MySQL database. You can access it with
+[this .my.cnf](.my.cnf) or just with this command:
 
-### Idea 1: Minimal cloudness
-We make one self-contained instance that can load everything, and we deploy a
-few copies of this.
+    mysql -usuperhero -pJ4j5yq6P6c4 -h arabic-tweets.carpklcd5jnh.us-east-1.rds.amazonaws.com tweets
 
-The [high-memory extra large instance](http://aws.amazon.com/ec2/pricing/)
-looks good for this, and it would cost $9.84 per day per node.
-I looked at a few other things, but they mostly look annoying to sign up for.
-Joyent, Azure and Linode are decent, but AWS seems to have better machines.
+This account only has `SELECT` permissions on the `tweets` table; you need not
+worry that you will accidentally alter the data if you use this account.
 
-If we make one build script for everything, it might include
+If lots of people start hitting this, we'll spin up more databases with the same data.
 
-* Python, iPython Notebook, various python libraries
-* R with various libraries
-* MySQL, configured with particular credentials
-* Download and import the data files in the various formats
+You'll probably want to alter the database somewhat, so we'll make database
+users with more privileges.
 
-My [desk install script](https://github.com/tlevine/desk/blob/master/install)
-has some ideas regarding the libraries.
-
-### Idea 2: Maximal cloudness
-We don't configure our own computers at all.
-
-We use [Amazon RDS](http://aws.amazon.com/rds/) for the database.
-I'd go with the High-Memory Extra Large DB instance. It's just a MySQL server
-[behind a firewall](http://www.razorsql.com/articles/amazon_rds_mysql.html).
-
-We use someone else's EC2 iPython Notebook configuration. Here are possibilities.
+### iPython Notebook
+We have iPython Notebooks running in Virginia. We're gonna use one of these images/services.
 
 * [NotebookCloud](https://notebookcloud.appspot.com)
 * [PiCloud Notebook](http://blog.picloud.com/2012/12/23/introducing-the-picloud-notebook/)
 * [iPython in a box](https://github.com/wholeslide/ipython_in_a_box)
 * [This EC2 image](https://aws.amazon.com/amis/crosscompute-python-scientific-computing-environment-and-tutorials-20121009)
 
+### RStudio
 We're using the [Bioconductor AMI](http://bioconductor.org/help/bioconductor-cloud-ami/)
-on [m2.xlarge](http://aws.amazon.com/ec2/instance-types/) instances.
-It needs these extra things:
+Make sure to use the version with SSH access so you can add these extra things:
 
+    # As root
     apt-get install libmysqlclient-dev
+    adduser [username]
 
-We use [Mortar](https://mortardata.com) for Hadoop. They have
-[directions for loading CSVs from S3](http://help.mortardata.com/reference/loading_and_storing_data/CSV).
+    # As the user
+    cd
+    git clone git://github.com/tlevine/arabic-tweets.git
+    ln -s arabic-tweets/.my.cnf .
+    Rscript -e "install.packages('RMySQL')"
 
-## Plans
-We don't have to do everything I suggest there. I'll probably start
-by putting it in MySQL and then transforming everything from there.
+RStudio runs on port 8787.
 
-## Converting data
-I'm loading everything into R, then to MySQL, then plying it and pulling it back
-out into the various formats.
-
-First, add the database to your `~/.my.cnf`.
-
-Next, set up the schema.
-
-    mysql < schema.sql
-
-Download the files to the `tweets` directory, and gunzip them; they'll now be
-named `tweets/tweets_ar_1?[0-9].txt`.
-
-Run the MySQL import script.
-
-    Rscript import.r
