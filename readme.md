@@ -104,7 +104,7 @@ Also, note that most of the storage is mounted on `/mnt`.
 ### Useful snippets
 Wait for the csv to be ready, then load them.
 
-    while true; do if test $(ls tweets/*.csv | wc -l) -eq 12; then ./import.sh; break; else sleep 10; fi; don
+    while true; do if test $(ls tweets/*.csv | wc -l) -eq 12; then sleep 1h && ./import.sh; break; else sleep 10; fi; don
 
 Transfer things to and from S3.
 
