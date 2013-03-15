@@ -1,3 +1,11 @@
+CREATE TABLE `tweets_import` (
+  `username` VARCHAR(20) NOT NULL,
+  `userid` INT NOT NULL,
+  `id` VARCHAR(60) NOT NULL,
+  `date` TIMESTAMP NOT NULL DEFAULT 0,
+  `text` VARCHAR(140) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `tweets` (
   -- Username
   -- http://www.mediabistro.com/alltwitter/tag/maximum-username-length-on-twitter
@@ -20,9 +28,8 @@ CREATE TABLE `tweets` (
   -- The Tweet
   `text` VARCHAR(140) NOT NULL,
 
+  KEY `username` (`username`),
+  KEY `userid` (`userid`),
+  KEY `date` (`date`)
   UNIQUE KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE INDEX `username` ON tweets(`username`);
-CREATE INDEX `userid`   ON tweets(`userid`);
-CREATE INDEX `date`     ON tweets(`date`);
