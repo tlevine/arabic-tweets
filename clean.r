@@ -11,5 +11,5 @@ for (spreadsheet.in in spreadsheets) {
 
   # Just write to csv because dbWriteTable is being weird
   cat(paste('Writing', spreadsheet.out, '\n'))
-  write.table(tweets, row.names = F, file = spreadsheet.out, header = F, col.names = F, sep = ',')
+  write.table(tweets, row.names = F, file = spreadsheet.out, col.names = F, sep = ',')
 }
