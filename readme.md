@@ -66,10 +66,11 @@ We have some files that are suitable for analysis on a laptop, but we've also
 loaded the full dataset into a server in Virginia and have set up some other
 servers in Virginia from which you can analyse the dataset. 
 
-All of the systems are AWS EC2 or RDS instances with 15GB of RAM
-([m2.xlarge](http://aws.amazon.com/ec2/instance-types/) and db.m2.xlarge, respectively),
-which is enough to fit most of the data in RAM. We can easily use different
-instances if you need more power.
+All of the systems are AWS EC2 or RDS instances. I've been using the ones with
+15GB of RAM ([m2.xlarge](http://aws.amazon.com/ec2/instance-types/) and
+db.m2.xlarge, respectively), which is enough to fit most of the data in RAM.
+The m2.2xlarge should be enough to fit the whole thing in RAM, and we can
+easily use different instances if you need more power.
 
 ### Database
 Data are in a canonical MySQL database. You can access it with
@@ -89,8 +90,6 @@ users with more privileges.
 We have iPython Notebooks running in Virginia. We're gonna use one of these images/services.
 
 * [NotebookCloud](https://notebookcloud.appspot.com)
-* [PiCloud Notebook](http://blog.picloud.com/2012/12/23/introducing-the-picloud-notebook/)
-* [iPython in a box](https://github.com/wholeslide/ipython_in_a_box)
 * [This EC2 image](https://aws.amazon.com/amis/crosscompute-python-scientific-computing-environment-and-tutorials-20121009)
 
 ### RStudio
