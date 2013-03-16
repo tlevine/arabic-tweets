@@ -121,3 +121,14 @@ It's on 8.5 million out of 55 million records. In order to see the warnings,
 I need to [run `SHOW WARNINGS` from the same session](http://serverfault.com/questions/96401/how-does-one-list-warnings-from-the-mysqlimport-utility),
 which you can't do with `mysqlimport`. So maybe I'll try running this inside
 a session.
+
+The range of dates is November 20, 2011 to March 16, 2013.
+
+    mysql> select min(date), max(date) from tweets;
+    +---------------------+---------------------+
+    | min(date)           | max(date)           |
+    +---------------------+---------------------+
+    | 2011-11-20 17:14:40 | 2013-03-16 12:42:58 |
+    +---------------------+---------------------+
+    1 row in set (0.00 sec)
+
