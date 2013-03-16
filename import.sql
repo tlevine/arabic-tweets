@@ -1,7 +1,7 @@
 SET CHARACTER SET utf8;
 SET NAMES utf8;
 LOAD DATA LOCAL
-INFILE 'tweets/tweets-sample.csv'
+INFILE 'tweets/tweets.csv'
 INTO TABLE tweets.tweets
 CHARACTER SET 'utf8'
 FIELDS
