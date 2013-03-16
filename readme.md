@@ -110,3 +110,12 @@ Transfer things to and from S3.
 
     s3cmd put tweets_ar_1.txt.csv s3://arabictweets
     s3cmd get s3://arabictweets/tweets_ar_1.txt.csv
+
+I got these warnings.
+
+    $ mysqlimport tweets --local --default-character-set=utf8 --fields-enclosed-by=\" --fields-terminated-by=, --lines-terminated-by=\\n --columns=username,userid,id,date,text tweets/tweets.csv
+    tweets.tweets: Records: 55477934  Deleted: 0  Skipped: 54916  Warnings: 8477983
+
+It's on 8.5 million out of 55 million records. In order to see the warnings,
+I need to [run `SHOW WARNINGS` from the same session](http://serverfault.com/questions/96401/how-does-one-list-warnings-from-the-mysqlimport-utility),
+which you can't do with `mysqlimport`.
