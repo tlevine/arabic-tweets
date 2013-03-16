@@ -68,7 +68,7 @@ easily use different instances if you need more power.
 Data are in a canonical MySQL database. You can access it with
 [this .my.cnf](.my.cnf) or just with this command:
 
-    mysql -usuperhero -pJ4j5yq6P6c4 -h arabic-tweets.carpklcd5jnh.us-east-1.rds.amazonaws.com tweets
+    mysql -usuperhero -pJ4j5yq6P6c4 -h tweets.carpklcd5jnh.us-east-1.rds.amazonaws.com
 
 This account only has `SELECT` permissions on the `tweets` table; you need not
 worry that you will accidentally alter the data if you use this account.
@@ -118,4 +118,5 @@ I got these warnings.
 
 It's on 8.5 million out of 55 million records. In order to see the warnings,
 I need to [run `SHOW WARNINGS` from the same session](http://serverfault.com/questions/96401/how-does-one-list-warnings-from-the-mysqlimport-utility),
-which you can't do with `mysqlimport`.
+which you can't do with `mysqlimport`. So maybe I'll try running this inside
+a session.
