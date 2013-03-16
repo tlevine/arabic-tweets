@@ -3,6 +3,7 @@ INFILE 'tweets/tweets.csv'
 INTO TABLE tweets.tweets
 CHARACTER_SET utf8
 FIELDS OPTIONALLY ENCLOSED BY '"'
+ESCAPED BY '\\'
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY='\n'
 (username,userid,id,date,text);
