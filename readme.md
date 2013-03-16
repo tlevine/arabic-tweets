@@ -8,11 +8,10 @@ servers and load the data into the respective programs before the datadive
 starts.
 
 ## Formats
-Data are available in these formats.
+Data are available in these text formats.
 
-* Full CSV file
-* CSV of a random sample
-* MySQL dump
+* Full CSV file (on S3)
+* [CSV of a random sample](http://arabictweets.s3-website-us-west-2.amazonaws.com/tweets-sample.csv)
 
 It's also in a MySQL database, and we have code for loading them into R and
 Python (Pandas).
