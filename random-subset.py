@@ -5,6 +5,6 @@ import random
 t_in = open('tweets/tweets.csv')
 t_out = open('tweets/tweets-sample.csv', 'a')
 
-for line in t:
+for line in t_in:
     if random.uniform(0,1) < (20000 / 95000000):
         t_out.write(line)
