@@ -8,10 +8,12 @@ servers and load the data into the respective programs before the datadive
 starts.
 
 ## Formats
-Data are available in these text formats.
+Data are available as a 25GB CSV file on S3. Talk to Tom if you want that one.
+You can also get random samples of that file of varying sizes.
 
-* Full CSV file (on S3)
-* [CSV of a random sample](http://arabictweets.s3-website-us-west-2.amazonaws.com/tweets-sample.csv)
+* [20,000 rows](http://arabictweets.s3-website-us-west-2.amazonaws.com/tweets-sample-20000.csv)
+* [100,000 rows](http://arabictweets.s3-website-us-west-2.amazonaws.com/tweets-sample-100000.csv)
+* [500,000 rows](http://arabictweets.s3-website-us-west-2.amazonaws.com/tweets-sample-500000.csv)
 
 It's also in a MySQL database, and we have code for loading them into R and
 Python (Pandas).
