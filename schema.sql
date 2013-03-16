@@ -1,4 +1,6 @@
 CREATE TABLE `tweets` (
+  `pk` INT NOT NULL AUTO_INCREMENT,
+
   -- http://www.mediabistro.com/alltwitter/tag/maximum-username-length-on-twitter
   `username` VARCHAR(20) NOT NULL,
 
@@ -18,5 +20,6 @@ CREATE TABLE `tweets` (
   KEY `username` (`username`),
   KEY `userid` (`userid`),
   KEY `date` (`date`),
-  UNIQUE KEY (`id`)
+  UNIQUE KEY (`id`),
+  PRIMARY KEY(`pk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
