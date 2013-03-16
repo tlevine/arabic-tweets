@@ -68,7 +68,7 @@ easily use different instances if you need more power.
 Data are in a canonical MySQL database. You can access it with
 [this .my.cnf](.my.cnf) or just with this command:
 
-    mysql -usuperhero -pJ4j5yq6P6c4 -h tweets.carpklcd5jnh.us-east-1.rds.amazonaws.com
+    mysql -usuperhero -pJ4j5yq6P6c4 -h tweets2.carpklcd5jnh.us-east-1.rds.amazonaws.com
 
 This account only has `SELECT` permissions on the `tweets` table; you need not
 worry that you will accidentally alter the data if you use this account.
